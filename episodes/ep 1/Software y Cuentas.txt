@@ -1,9 +1,0 @@
-Instalar SQL Server:
-Bajar cualquier de las versiones para desarrollador de SQL
-https://www.microsoft.com/es-es/sql-server/sql-server-downloads
-
-Instalar Spyder: 
-https://www.spyder-ide.org/download
-
-Crear Cuenta Demo en Oanda: 
-oanda.com/register/
