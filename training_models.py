@@ -79,7 +79,10 @@ print('2.Define models and fine-tuned variations')
 from xgboost import XGBClassifier
 np.random.seed(0)
 models = [
-   (XGBClassifier(n_estimators=500, max_depth=6, learning_rate=0.05, random_state=0), "XGB (500 trees)"),
+   (XGBClassifier(n_estimators=500, 
+                  max_depth=6, 
+                  learning_rate=0.05, 
+                  random_state=0), "XGB (500 trees)"),
    (RandomModel(), "Random Model")
 ]
 
@@ -144,32 +147,21 @@ results_df
 # 5 - plotting
 pivot = results_df.pivot(index="threshold", columns="model", values="test_precision_1")
 pivot.plot(marker='o')
-plt.title("Test - Precision vs Threshold")
-plt.ylabel("Precision (class 1)")
+plt.title("Test - Precision")
 plt.grid()
 plt.show()      
 
 pivot = results_df.pivot(index="threshold", columns="model", values="test_recall_1")
 pivot.plot(marker='o')
-plt.title("Test - Recall vs Threshold")
-plt.ylabel("Recall (class 1)")
+plt.title("Test - Recall")
 plt.grid()
 plt.show()
 
-for model in results_df["model"].unique():
-    df = results_df[results_df["model"] == model]
-    plt.plot(df["n_trades"], df["test_precision_1"], marker='o', label=model)
-plt.xlabel("Test - Number of Trades")
-plt.ylabel("Precision")
-plt.title("Precision vs Trades")
-plt.legend()
+pivot = results_df.pivot(index="threshold", columns="model", values="n_trades")
+pivot.plot(marker='o')
+plt.title("Test - Cantidad de entradads")
 plt.grid()
 plt.show()
-
-
-
-
-
 
 
 
@@ -189,3 +181,14 @@ plt.show()
    # (CatBoostClassifier(verbose=0, depth=6, random_seed=27), "CatBoost (depth=6)"),
    # (CatBoostClassifier(verbose=0, iterations=500), "CatBoost (500)"),
    # (RandomForestClassifier(n_estimators=500, max_depth=30, random_state=0), "RF (500 trees, max_depth=30)"),
+
+
+# for model in results_df["model"].unique():
+#     df = results_df[results_df["model"] == model]
+#     plt.plot(df["n_trades"], df["test_precision_1"], marker='o', label=model)
+# plt.xlabel("Test - Number of Trades")
+# plt.ylabel("Precision")
+# plt.title("Precision vs Trades")
+# plt.legend()
+# plt.grid()
+# plt.show()

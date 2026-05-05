@@ -645,6 +645,21 @@ def update_sql_table(database, schema_name, table_name):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def insert_or_update_sql_table_old(df, table_name, currency, column):
 #     _engine = get_engine()
 #     df = (
