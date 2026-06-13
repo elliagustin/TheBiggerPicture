@@ -1,0 +1,68 @@
+//@version=3
+study("Currency Strength Indicator CSA 5-Step System")
+
+// Input for RSI period
+periods = input(7, title="RSI Period")
+
+// Calculate RSI for currency pairs
+eurusd = security("EURUSD", period, rsi(close, periods))
+eurgbp = security("EURGBP", period, rsi(close, periods))
+euraud = security("EURAUD", period, rsi(close, periods))
+eurjpy = security("EURJPY", period, rsi(close, periods))
+eurcad = security("EURCAD", period, rsi(close, periods))
+eurnzd = security("EURNZD", period, rsi(close, periods))
+
+usdeur = security("USDEUR", period, rsi(close, periods))
+usdgbp = security("USDGBP", period, rsi(close, periods))
+usdaud = security("USDAUD", period, rsi(close, periods))
+usdjpy = security("USDJPY", period, rsi(close, periods))
+usdcad = security("USDCAD", period, rsi(close, periods))
+usdnzd = security("USDNZD", period, rsi(close, periods))
+
+gbpeur = security("GBPEUR", period, rsi(close, periods))
+gbpusd = security("GBPUSD", period, rsi(close, periods))
+gbpaud = security("GBPAUD", period, rsi(close, periods))
+gbpjpy = security("GBPJPY", period, rsi(close, periods))
+gbpcad = security("GBPCAD", period, rsi(close, periods))
+gbpnzd = security("GBPNZD", period, rsi(close, periods))
+
+audeur = security("AUDEUR", period, rsi(close, periods))
+audusd = security("AUDUSD", period, rsi(close, periods))
+audgbp = security("AUDGBP", period, rsi(close, periods))
+audjpy = security("AUDJPY", period, rsi(close, periods))
+audcad = security("AUDCAD", period, rsi(close, periods))
+audnzd = security("AUDNZD", period, rsi(close, periods))
+
+cadeur = security("CADEUR", period, rsi(close, periods))
+cadusd = security("CADUSD", period, rsi(close, periods))
+cadaud = security("CADAUD", period, rsi(close, periods))
+cadgbp = security("CADGBP", period, rsi(close, periods))
+cadjpy = security("CADJPY", period, rsi(close, periods))
+cadnzd = security("CADNZD", period, rsi(close, periods))
+
+nzdeur = security("NZDEUR", period, rsi(close, periods))
+nzdusd = security("NZDUSD", period, rsi(close, periods))
+nzdaud = security("NZDAUD", period, rsi(close, periods))
+nzdgbp = security("NZDGBP", period, rsi(close, periods))
+nzdjpy = security("NZDJPY", period, rsi(close, periods))
+nzdcad = security("NZDCAD", period, rsi(close, periods))
+
+// jpyusd = security("JPYUSD", period, rsi(close, periods))
+// jpygbp = security("JPYGBP", period, rsi(close, periods))
+// jpyaud = security("JPYAUD", period, rsi(close, periods))
+// jpynzd = security("JPYNZD", period, rsi(close, periods))
+// jpycad = security("JPYCAD", period, rsi(close, periods))
+// jpyeur = security("JPYEUR", period, rsi(close, periods))
+
+// Plot currency strengths
+plot(avg(eurusd, eurgbp, euraud, eurjpy, eurcad, eurnzd), "EUR", yellow)
+plot(avg(usdaud, usdgbp, usdeur, usdjpy, usdcad, usdnzd), "USD", green)
+plot(avg(gbpusd, gbpeur, gbpaud, gbpjpy, gbpcad, gbpnzd), "GBP", orange)
+plot(avg(audusd, audgbp, audeur, audjpy, audcad, audnzd), "AUD", #FFAAD2)
+plot(avg(nzdusd, nzdgbp, nzdaud, nzdjpy, nzdcad, nzdeur), "NZD", purple)
+// plot(avg(jpyusd, jpygbp, jpyaud, jpynzd, jpycad, jpyeur), "JPY", #FFC000)
+plot(avg(cadusd, cadgbp, cadaud, cadnzd, cadjpy, cadeur), "CAD", red)
+
+// Add horizontal lines
+hline(68)
+hline(32)
